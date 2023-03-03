@@ -9,6 +9,12 @@ import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 import { v4 as uuidv4 } from "uuid";
+import authRoutes from "./routes/auth.js";
+import {
+  registerAdmin,
+  registerStudent,
+  registerTeacher,
+} from "./controllers/auth.js";
 
 //CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -27,36 +33,63 @@ mongoose.set("strictQuery", true);
 
 //FILE STORAGE
 const adminStorage = multer.diskStorage({
-    destination: function (req, file, cb){
-        cb(null, "public/assets/admins");
-    },
-    filename: function (req, file, cb){
-        const uniqueSuffix = Date.now() + "-" + uuidv4();
-        cb(null, uniqueSuffix + "-" + file.originalname);
-    }
+  destination: function (req, file, cb) {
+    cb(null, "public/assets/admins");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + uuidv4();
+    cb(null, uniqueSuffix + "-" + file.originalname);
+  },
 });
 
 const teacherStorage = multer.diskStorage({
-    destination: function (req, file, cb){
-        cb(null, "public/assets/teachers");
-    },
-    filename: function (req, file, cb){
-        const uniqueSuffix = Date.now() + "-" + uuidv4();
-        cb(null, uniqueSuffix + "-" + file.originalname);
-    }
+  destination: function (req, file, cb) {
+    cb(null, "public/assets/teachers");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + uuidv4();
+    cb(null, uniqueSuffix + "-" + file.originalname);
+  },
 });
 
 const studentStorage = multer.diskStorage({
-    destination: function (req, file, cb){
-        cb(null, "public/assets/students");
-    },
-    filename: function (req, file, cb){
-        const uniqueSuffix = Date.now() + "-" + uuidv4();
-        cb(null, uniqueSuffix + "-" + file.originalname);
-    }
+  destination: function (req, file, cb) {
+    cb(null, "public/assets/students");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + uuidv4();
+    cb(null, uniqueSuffix + "-" + file.originalname);
+  },
 });
 
-const adminUpload = multer({storage: adminStorage});
-const teacherUpload = multer({storage: teacherStorage});
-const studentUpload = multer({storage: studentStorage});
+const adminUpload = multer({ storage: adminStorage });
+const teacherUpload = multer({ storage: teacherStorage });
+const studentUpload = multer({ storage: studentStorage });
 
+//ROUTES WITH FILES
+app.post(
+  "/auth/registerStudent",
+  studentUpload.single("picture"),
+  registerStudent
+);
+app.post(
+  "/auth/registerTeacher",
+  teacherUpload.single("picture"),
+  registerTeacher
+);
+app.post("/auth/registerAdmin", adminUpload.single("picture"), registerAdmin);
+
+//ROUTES
+app.use("/auth", authRoutes);
+
+//MONGOOSE SETUP
+const PORT = process.env.PORT || 6001;
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server port: ${PORT}`));
+  })
+  .catch((error) => console.log(error));
