@@ -1,9 +1,9 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import Admin from "../models/Admin";
-import Grade from "../models/Grade";
-import Student from "../models/Student";
-import Teacher from "../models/Teacher";
+import Admin from "../models/Admin.js";
+import Grade from "../models/Grade.js";
+import Student from "../models/Student.js";
+import Teacher from "../models/Teacher.js";
 
 //REGISTER USER
 export const registerAdmin = async (req, res) => {
