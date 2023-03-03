@@ -55,3 +55,8 @@ const studentStorage = multer.diskStorage({
         cb(null, uniqueSuffix + "-" + file.originalname);
     }
 });
+
+const adminUpload = multer({storage: adminStorage});
+const teacherUpload = multer({storage: teacherStorage});
+const studentUpload = multer({storage: studentStorage});
+
