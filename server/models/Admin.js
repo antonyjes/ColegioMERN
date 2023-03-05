@@ -6,6 +6,7 @@ const AdminSchema = new mongoose.Schema(
         lastName: String,
         email: {type: String, unique: true},
         password: String,
+        role: String,
         picturePath: {type: String, default: ""}
     },
     {timestamps: true}

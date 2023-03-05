@@ -6,6 +6,7 @@ const TeacherSchema = new mongoose.Schema(
         lastName: String,
         email: {type: String, unique: true},
         password: String,
+        role: String,
         phone: Number,
         picturePath: {type: String, default: ""},
         area: {type: String, enum: ['Matematicas', 'Comunicacion', 'CTA', 'Deportes', 'Religion', 'Ingles']}

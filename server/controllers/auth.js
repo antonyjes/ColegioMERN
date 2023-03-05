@@ -16,6 +16,7 @@ export const registerAdmin = async (req, res) => {
       lastName,
       email,
       password: passwordHash,
+      role: "Admin",
       picturePath: req.file ? req.file.filename : "",
     });
     const savedAdmin = await newAdmin.save();
@@ -46,6 +47,7 @@ export const registerStudent = async (req, res) => {
       lastName,
       dni,
       password: passwordHash,
+      role: "Student",
       phone,
       picturePath: req.file ? req.file.filename : "",
       fechaNacimiento,
@@ -71,6 +73,7 @@ export const registerTeacher = async (req, res) => {
       lastName,
       email,
       password: passwordHash,
+      role: "Teacher",
       phone,
       picturePath: req.file ? req.file.filename : "",
       area,

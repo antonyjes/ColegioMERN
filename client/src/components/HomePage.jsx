@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux";
+
 const HomePage = () => {
+    const user = useSelector((state) => state.user);
     return(
         <div>
-            <p>Welcome Admin</p>
+            <p>Welcome {user.role}</p>
         </div>
     )
 }
