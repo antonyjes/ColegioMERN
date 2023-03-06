@@ -42,8 +42,8 @@ const LoginPage = () => {
   const loginStudent = async () => {
     const loggedInResponse = await fetch("http://localhost:3003/auth/login", {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({typeUser: "Student", dni, password}),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ typeUser: "Student", dni, password }),
     });
     const loggedIn = await loggedInResponse.json();
     if (loggedIn) {
@@ -69,37 +69,38 @@ const LoginPage = () => {
       <div className="title">
         <h1>Welcome to the Blog 1.0</h1>
       </div>
-      <form className="form-login" onSubmit={handleSubmit}>
+      <form className="relative mb-3 xl:w-96" onSubmit={handleSubmit}>
         {isLogin ? (
           <>
-          <div className="mb-3">
-          <label className="form-label">Type of User</label>
-          <select
-            value={typeUser}
-            onChange={(e) => setTypeUser(e.target.value)}
-          >
-            <option value="Admin">Admin</option>
-            <option value="Teacher">Teacher</option>
-          </select>
-        </div>
-          <div className="mb-3">
-            <label className="form-label">Email address</label>
-            <input
-              type="email"
-              className="form-control"
-              placeholder="name@example.com"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-            />
-          </div>
+            <div className="mb-6">
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type of User</label>
+              <select
+                value={typeUser}
+                onChange={(e) => setTypeUser(e.target.value)}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option value="Admin">Admin</option>
+                <option value="Teacher">Teacher</option>
+              </select>
+            </div>
+            <div className="mb-6">
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email address</label>
+              <input
+                type="email"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="name@example.com"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
+            </div>
           </>
         ) : (
           <div className="mb-3">
-            <label className="form-label">DNI</label>
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DNI</label>
             <input
-              type="dni"
-              className="form-control"
-              placeholder="name@example.com"
+              type="text"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="78909889"
               onChange={(e) => setDni(e.target.value)}
               value={dni}
             />
@@ -107,10 +108,10 @@ const LoginPage = () => {
         )}
 
         <div className="mb-3">
-          <label className="form-label">Password</label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
           <input
             type="password"
-            className="form-control"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
@@ -126,8 +127,8 @@ const LoginPage = () => {
           }}
         >
           {isLogin
-            ? "Don't have an account? Sign Up here."
-            : "Already have an account? Login here."}
+            ? "I'm not an admin or teacher."
+            : "I'm not a student."}
         </p>
       </div>
     </>
