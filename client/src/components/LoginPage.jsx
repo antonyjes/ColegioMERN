@@ -125,7 +125,7 @@ const LoginPage = () => {
           onClick={() => {
             setPageType(isLogin ? "loginStudent" : "login");
           }}
-          className="pl-10 underline"
+          className="pl-10 underline absolute"
         >
           {isLogin
             ? "I'm not an admin or teacher."
