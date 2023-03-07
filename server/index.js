@@ -16,6 +16,7 @@ import {
   registerStudent,
   registerTeacher,
 } from "./controllers/auth.js";
+import { verifyToken } from "./middleware/auth.js";
 
 //CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -70,11 +71,13 @@ const studentUpload = multer({ storage: studentStorage });
 //ROUTES WITH FILES
 app.post(
   "/auth/registerStudent",
+  verifyToken,
   studentUpload.single("picture"),
   registerStudent
 );
 app.post(
   "/auth/registerTeacher",
+  verifyToken,
   teacherUpload.single("picture"),
   registerTeacher
 );

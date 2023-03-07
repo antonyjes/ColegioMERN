@@ -7,7 +7,7 @@ const StudentSchema = new mongoose.Schema(
         dni: {type: String, unique: true},
         password: String,
         role: String,
-        phone: Number,
+        phone: String,
         picturePath: {type: String, default: ""},
         fechaNacimiento: Date,
         nacionality: String,

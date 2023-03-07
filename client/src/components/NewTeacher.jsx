@@ -2,9 +2,48 @@ import Sidebar from "./Sidebar";
 import Aside from "./Aside";
 import Dropzone from "react-dropzone";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const NewTeacher = () => {
+    const token = useSelector((state) => state.token);
+    const navigate = useNavigate();
+
   const [fileValue, setFileValue] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [area, setArea] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("firstName", firstName);
+    formData.append("lastName", lastName);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("phone", phone);
+    formData.append("picture", fileValue);
+    formData.append("picturePath", fileValue.name);
+    formData.append("area", area);
+    
+    const savedTeacherResponse = await fetch(
+        "http://localhost:3003/auth/registerTeacher",
+        {
+            method: "POST",
+            headers: {Authorization: `Bearer ${token}`},
+            body: formData,
+        }
+    );
+    
+    const savedTeacher = await savedTeacherResponse.json();
+
+    if(savedTeacher){
+        navigate("/teachers")
+    }
+  }
 
   return (
     <>
@@ -15,7 +54,7 @@ const NewTeacher = () => {
           <div className="flex flex-row justify-between mb-4">
             <h1 className="text-3xl font-bold mb-4">New Teacher</h1>
           </div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div class="grid gap-6 mb-6 md:grid-cols-2">
               <div>
                 <label
@@ -30,6 +69,8 @@ const NewTeacher = () => {
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="John"
                   required
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
               <div>
@@ -45,6 +86,8 @@ const NewTeacher = () => {
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Doe"
                   required
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
               <div>
@@ -55,12 +98,13 @@ const NewTeacher = () => {
                   Phone number
                 </label>
                 <input
-                  type="tel"
+                  type="text"
                   id="phone"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="123-45-678"
-                  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                   required
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
               <div>
@@ -71,11 +115,13 @@ const NewTeacher = () => {
                   Area
                 </label>
                 <input
-                  type="url"
+                  type="text"
                   id="website"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="flowbite.com"
                   required
+                  value={area}
+                  onChange={(e) => setArea(e.target.value)}
                 />
               </div>
             </div>
@@ -143,6 +189,8 @@ const NewTeacher = () => {
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="john.doe@company.com"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div class="mb-6">
@@ -158,6 +206,8 @@ const NewTeacher = () => {
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="•••••••••"
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <button
