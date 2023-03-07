@@ -48,11 +48,11 @@ const Sidebar = () => {
             </div>
           </div>
           <div className="flex items-center">
-            <div class="relative inline-block text-left">
+            <div className="relative inline-block text-left">
               <div>
                 <button
                   type="button"
-                  class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                  className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                   id="menu-button"
                   aria-expanded="true"
                   aria-haspopup="true"
@@ -60,7 +60,7 @@ const Sidebar = () => {
                 >
                   {`${user.firstName} ${user.lastName}`}
                   <svg
-                    class="-mr-1 h-5 w-5 text-gray-400"
+                    className="-mr-1 h-5 w-5 text-gray-400"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                     aria-hidden="true"
@@ -74,7 +74,7 @@ const Sidebar = () => {
                 </button>
               </div>
               <div
-                class={`${isOpen ? "absolute" : "hidden"} right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+                className={`${isOpen ? "absolute" : "hidden"} right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
@@ -82,7 +82,7 @@ const Sidebar = () => {
               >
                 <div class="py-1" role="none">
                   <p
-                    class="text-gray-700 block px-4 py-2 text-sm"
+                    className="text-gray-700 block px-4 py-2 text-sm"
                     role="menuitem"
                     tabindex="-1"
                     id="menu-item-0"
@@ -92,7 +92,7 @@ const Sidebar = () => {
                   <div role="none">
                     <button
                       type="submit"
-                      class="text-gray-700 block w-full px-4 py-2 text-left text-sm"
+                      className="text-gray-700 block w-full px-4 py-2 text-left text-sm"
                       role="menuitem"
                       tabindex="-1"
                       id="menu-item-3"

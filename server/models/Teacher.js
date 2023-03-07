@@ -9,7 +9,7 @@ const TeacherSchema = new mongoose.Schema(
         role: String,
         phone: Number,
         picturePath: {type: String, default: ""},
-        area: {type: String, enum: ['Matematicas', 'Comunicacion', 'CTA', 'Deportes', 'Religion', 'Ingles']}
+        area: String,
     },
     { timestamps: true }
 );

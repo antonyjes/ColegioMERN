@@ -1,5 +1,6 @@
 import HomePage from "components/HomePage";
 import LoginPage from "components/LoginPage";
+import NewTeacher from "components/NewTeacher";
 import Teachers from "components/Teachers";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
@@ -19,6 +20,10 @@ function App() {
           <Route
             path="/teachers"
             element={isAuth ? <Teachers /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/newTeacher"
+            element={isAuth ? <NewTeacher /> : <Navigate to="/" />}
           />
         </Routes>
       </BrowserRouter>

@@ -4,12 +4,14 @@ import { setTeachers } from "state";
 import ReactPaginate from "react-paginate";
 import Sidebar from "./Sidebar";
 import Aside from "./Aside";
+import { useNavigate } from "react-router-dom";
 
 const Teachers = () => {
   const dispatch = useDispatch();
   const teachers = useSelector((state) => state.teachers);
   const token = useSelector((state) => state.token);
   const [currentPage, setCurrentPage] = useState(0);
+  const navigate = useNavigate();
 
   const getTeachers = async () => {
     const response = await fetch("http://localhost:3003/teachers", {
@@ -59,7 +61,7 @@ const Teachers = () => {
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
           <div className="flex flex-row justify-between mb-4">
             <h1 className="text-3xl font-bold mb-4">Teachers</h1>
-            <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2">
+            <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2" onClick={() => navigate("/newTeacher")}>
               New teacher
             </button>
           </div>
