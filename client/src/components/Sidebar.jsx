@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setLogout } from "state";
 
 const Sidebar = ({userName}) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -33,7 +35,7 @@ const Sidebar = ({userName}) => {
                 ></path>
               </svg>
             </button>
-            <a href="https://flowbite.com" className="flex ml-2 md:mr-24">
+            <div className="flex ml-2 md:mr-24" onClick={() => navigate("/home")} role="button">
               <img
                 src="https://flowbite.com/docs/images/logo.svg"
                 className="h-8 mr-3"
@@ -42,7 +44,7 @@ const Sidebar = ({userName}) => {
               <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                 School
               </span>
-            </a>
+            </div>
           </div>
           <div className="flex items-center">
             <div class="relative inline-block text-left">
