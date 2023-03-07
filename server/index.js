@@ -10,6 +10,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { v4 as uuidv4 } from "uuid";
 import authRoutes from "./routes/auth.js";
+import teacherRoutes from "./routes/teachers.js"
 import {
   registerAdmin,
   registerStudent,
@@ -81,6 +82,7 @@ app.post("/auth/registerAdmin", adminUpload.single("picture"), registerAdmin);
 
 //ROUTES
 app.use("/auth", authRoutes);
+app.use("/teachers", teacherRoutes);
 
 //MONGOOSE SETUP
 const PORT = process.env.PORT || 6001;

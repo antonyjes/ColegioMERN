@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setLogout } from "state";
 
-const Sidebar = ({userName}) => {
+const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user)
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -57,7 +58,7 @@ const Sidebar = ({userName}) => {
                   aria-haspopup="true"
                   onClick={() => setIsOpen(!isOpen)}
                 >
-                  {userName}
+                  {`${user.firstName} ${user.lastName}`}
                   <svg
                     class="-mr-1 h-5 w-5 text-gray-400"
                     viewBox="0 0 20 20"

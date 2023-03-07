@@ -7,7 +7,7 @@ const HomePage = () => {
     const user = useSelector((state) => state.user);
     return(
         <div>
-            <Sidebar userName={`${user.firstName} ${user.lastName}`} />
+            <Sidebar/>
             <Aside />
             <Dashboard role={user.role} />
         </div>
