@@ -5,6 +5,7 @@ const initialState = {
   token: null,
   teachers: [],
   students: [],
+  grades: [],
 };
 
 export const authSlice = createSlice({
@@ -24,10 +25,13 @@ export const authSlice = createSlice({
     },
     setStudents: (state, action) => {
       state.students = action.payload.students;
+    },
+    setGrades: (state, action) => {
+      state.grades = action.payload.grades;
     }
   },
 });
 
-export const { setLogin, setLogout, setTeachers, setStudents } =
+export const { setLogin, setLogout, setTeachers, setStudents, setGrades } =
   authSlice.actions;
 export default authSlice.reducer;

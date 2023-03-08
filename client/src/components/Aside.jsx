@@ -191,12 +191,18 @@ const Aside = () => {
               } py-2 space-y-2 bg-slate-500 rounded`}
             >
               <li>
-                <p className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                <p
+                  className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  onClick={() => navigate("/grades/Primaria")}
+                >
                   Primaria
                 </p>
               </li>
               <li>
-                <p className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                <p
+                  className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  onClick={() => navigate("/grades/Secundaria")}
+                >
                   Secundaria
                 </p>
               </li>

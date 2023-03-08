@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const GradeSchema = new mongoose.Schema(
     {
         gradeName: String,
-        level: {type: String, enum: ['Primaria', 'Secundaria']}
+        level: String,
     },
     {timestamps: true}
 );
