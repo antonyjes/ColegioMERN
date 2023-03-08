@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setLogout } from "state";
@@ -5,6 +6,8 @@ import { setLogout } from "state";
 const Aside = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [studentDropdown, setStudentDropdown] = useState(false);
+  const [gradeDropdown, setGradeDropdown] = useState(false);
 
   return (
     <aside
@@ -15,7 +18,11 @@ const Aside = () => {
       <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
         <ul className="space-y-2">
           <li>
-            <div className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => navigate("/home")} role="button">
+            <div
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              onClick={() => navigate("/home")}
+              role="button"
+            >
               <svg
                 aria-hidden="true"
                 className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -30,7 +37,11 @@ const Aside = () => {
             </div>
           </li>
           <li>
-            <div className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => navigate("/teachers")} role="button">
+            <div
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              onClick={() => navigate("/teachers")}
+              role="button"
+            >
               <svg
                 aria-hidden="true"
                 className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -44,7 +55,11 @@ const Aside = () => {
             </div>
           </li>
           <li>
-            <div className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" role="button">
+            <button
+              type="button"
+              className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              onClick={() => setStudentDropdown(!studentDropdown)}
+            >
               <svg
                 aria-hidden="true"
                 className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -58,11 +73,44 @@ const Aside = () => {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span className="flex-1 ml-3 whitespace-nowrap">Students</span>
-            </div>
+              <span className="flex-1 ml-3 text-left whitespace-nowrap">
+                Students
+              </span>
+              <svg
+                className="w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+            <ul
+              className={`${
+                studentDropdown ? null : "hidden"
+              } py-2 space-y-2 bg-slate-500 rounded`}
+            >
+              <li>
+                <p className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                  Primaria
+                </p>
+              </li>
+              <li>
+                <p className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                  Secundaria
+                </p>
+              </li>
+            </ul>
           </li>
           <li>
-            <div className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" role="button">
+            <div
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              role="button"
+            >
               <svg
                 aria-hidden="true"
                 className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -80,7 +128,10 @@ const Aside = () => {
             </div>
           </li>
           <li>
-            <div className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" role="button">
+            <div
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              role="button"
+            >
               <svg
                 aria-hidden="true"
                 className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -98,7 +149,65 @@ const Aside = () => {
             </div>
           </li>
           <li>
-            <div className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => dispatch(setLogout())} role="button">
+            <button
+              type="button"
+              className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              onClick={() => setGradeDropdown(!gradeDropdown)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+                />
+              </svg>
+
+              <span className="flex-1 ml-3 text-left whitespace-nowrap">
+                Grades
+              </span>
+              <svg
+                className="w-6 h-6"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+            <ul
+              className={`${
+                gradeDropdown ? null : "hidden"
+              } py-2 space-y-2 bg-slate-500 rounded`}
+            >
+              <li>
+                <p className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                  Primaria
+                </p>
+              </li>
+              <li>
+                <p className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                  Secundaria
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <div
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              onClick={() => dispatch(setLogout())}
+              role="button"
+            >
               <svg
                 aria-hidden="true"
                 className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -115,7 +224,6 @@ const Aside = () => {
               <span className="flex-1 ml-3 whitespace-nowrap">Log Out</span>
             </div>
           </li>
-          
         </ul>
       </div>
     </aside>
