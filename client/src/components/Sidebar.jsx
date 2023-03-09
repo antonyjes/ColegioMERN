@@ -30,8 +30,8 @@ const Sidebar = () => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  clip-rule="evenodd"
-                  fill-rule="evenodd"
+                  clipRule="evenodd"
+                  fillRule="evenodd"
                   d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
                 ></path>
               </svg>
@@ -66,9 +66,9 @@ const Sidebar = () => {
                     aria-hidden="true"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
                 </button>
@@ -78,13 +78,13 @@ const Sidebar = () => {
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="menu-button"
-                tabindex="-1"
+                tabIndex="-1"
               >
-                <div class="py-1" role="none">
+                <div className="py-1" role="none">
                   <p
                     className="text-gray-700 block px-4 py-2 text-sm"
                     role="menuitem"
-                    tabindex="-1"
+                    tabIndex="-1"
                     id="menu-item-0"
                   >
                     Profile
@@ -94,7 +94,7 @@ const Sidebar = () => {
                       type="submit"
                       className="text-gray-700 block w-full px-4 py-2 text-left text-sm"
                       role="menuitem"
-                      tabindex="-1"
+                      tabIndex="-1"
                       id="menu-item-3"
                       onClick={() => dispatch(setLogout())}
                     >

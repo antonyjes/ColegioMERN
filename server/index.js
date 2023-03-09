@@ -12,6 +12,7 @@ import { v4 as uuidv4 } from "uuid";
 import authRoutes from "./routes/auth.js";
 import teacherRoutes from "./routes/teachers.js";
 import gradeRoutes from "./routes/grades.js";
+import studentRoutes from "./routes/students.js";
 import {
   registerAdmin,
   registerStudent,
@@ -88,6 +89,7 @@ app.post("/auth/registerAdmin", adminUpload.single("picture"), registerAdmin);
 app.use("/auth", authRoutes);
 app.use("/teachers", teacherRoutes);
 app.use("/grades", gradeRoutes);
+app.use("/students", studentRoutes);
 
 //MONGOOSE SETUP
 const PORT = process.env.PORT || 6001;

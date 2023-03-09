@@ -4,6 +4,7 @@ import HomePage from "components/HomePage";
 import LoginPage from "components/LoginPage";
 import NewGrade from "components/NewGrade";
 import NewTeacher from "components/NewTeacher";
+import StudentsByGrade from "components/StudentsByGrade";
 import Teachers from "components/Teachers";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
@@ -39,6 +40,10 @@ function App() {
           <Route
             path="/gradesByLevel/:level"
             element={isAuth ? <GradesByLevel /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/studentsByGrade/:gradeId"
+            element={isAuth ? <StudentsByGrade /> : <Navigate to="/" />}
           />
         </Routes>
       </BrowserRouter>
