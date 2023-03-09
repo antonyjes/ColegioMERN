@@ -1,6 +1,7 @@
 import Grades from "components/Grades";
 import HomePage from "components/HomePage";
 import LoginPage from "components/LoginPage";
+import NewGrade from "components/NewGrade";
 import NewTeacher from "components/NewTeacher";
 import Teachers from "components/Teachers";
 import { useSelector } from "react-redux";
@@ -29,6 +30,10 @@ function App() {
           <Route
             path="/grades/:level"
             element={isAuth ? <Grades /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/newGrade/:level"
+            element={isAuth ? <NewGrade /> : <Navigate to="/" />}
           />
         </Routes>
       </BrowserRouter>

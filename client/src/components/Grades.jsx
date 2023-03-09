@@ -62,7 +62,7 @@ const Grades = () => {
             <h1 className="text-3xl font-bold mb-4">Grades</h1>
             <button
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
-              onClick={() => navigate("/newTeacher")}
+              onClick={() => navigate(`/newGrade/${level}`)}
             >
               New grade
             </button>

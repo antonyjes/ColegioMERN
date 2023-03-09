@@ -6,8 +6,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const NewTeacher = () => {
-    const token = useSelector((state) => state.token);
-    const navigate = useNavigate();
+  const token = useSelector((state) => state.token);
+  const navigate = useNavigate();
 
   const [fileValue, setFileValue] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -28,22 +28,22 @@ const NewTeacher = () => {
     formData.append("picture", fileValue);
     formData.append("picturePath", fileValue.name);
     formData.append("area", area);
-    
+
     const savedTeacherResponse = await fetch(
-        "http://localhost:3003/auth/registerTeacher",
-        {
-            method: "POST",
-            headers: {Authorization: `Bearer ${token}`},
-            body: formData,
-        }
+      "http://localhost:3003/auth/registerTeacher",
+      {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+        body: formData,
+      }
     );
-    
+
     const savedTeacher = await savedTeacherResponse.json();
 
-    if(savedTeacher){
-        navigate("/teachers")
+    if (savedTeacher) {
+      navigate("/teachers");
     }
-  }
+  };
 
   return (
     <>
@@ -136,14 +136,8 @@ const NewTeacher = () => {
                     {...getRootProps()}
                     className="flex items-center justify-center w-full"
                   >
-                    <input
-                        {...getInputProps()}
-                        type="file"
-                        class="hidden"
-                      />
-                    <label
-                      class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                    >
+                    <input {...getInputProps()} type="file" class="hidden" />
+                    <label class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                       <div class="flex flex-col items-center justify-center pt-5 pb-6">
                         <svg
                           aria-hidden="true"
@@ -170,7 +164,7 @@ const NewTeacher = () => {
                             {fileValue.name}
                           </p>
                         )}
-                      </div>                      
+                      </div>
                     </label>
                   </div>
                 )}
