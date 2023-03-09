@@ -31,9 +31,19 @@ const Grades = () => {
     setCurrentPage(selectedPage);
   };
 
+  const handleDelete = async (gradeId) => {
+    const response = await fetch(`http://localhost:3003/grades/${gradeId}/delete`, {
+      method: "DELETE",
+      headers: {Authorization: `Bearer ${token}`, "Content-Type": "application/json",},
+    });
+    console.log(response);
+    console.log("Grade deleted");
+    getGrades();
+  }
+
   useEffect(() => {
     getGrades();
-  }, []); // eslint-disable-line
+  }, [level]); // eslint-disable-line
 
   const gradesToDisplay = grades
     .slice(offset, offset + PER_PAGE)
@@ -45,7 +55,7 @@ const Grades = () => {
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
             Edit
           </button>
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDelete(grade._id)}>
             Delete
           </button>
         </td>

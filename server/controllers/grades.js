@@ -25,3 +25,15 @@ export const getGrades = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
+
+// DELETE
+export const deleteGrade = async (req, res) => {
+  try {
+    const {gradeId} = req.params;
+    const deletedGrade = await Grade.findByIdAndDelete(gradeId);
+    res.status(200).json(deletedGrade);
+  } catch (error) {
+    console.log(error);
+    res.status(409).json({message: error.message});
+  }
+}
