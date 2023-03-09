@@ -1,4 +1,5 @@
 import Grades from "components/Grades";
+import GradesByLevel from "components/GradesByLevel";
 import HomePage from "components/HomePage";
 import LoginPage from "components/LoginPage";
 import NewGrade from "components/NewGrade";
@@ -34,6 +35,10 @@ function App() {
           <Route
             path="/newGrade/:level"
             element={isAuth ? <NewGrade /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/gradesByLevel/:level"
+            element={isAuth ? <GradesByLevel /> : <Navigate to="/" />}
           />
         </Routes>
       </BrowserRouter>
