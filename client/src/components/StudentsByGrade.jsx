@@ -41,6 +41,12 @@ const StudentsByGrade = () => {
 //     getGrades();
 //   }
 
+  function dateFormated(date) {
+    let dateObj = new Date(date);
+    let formattedDate = dateObj.toISOString().slice(0,10);
+    return formattedDate;
+  }
+
   useEffect(() => {
     getStudents();
   }, [gradeId]); // eslint-disable-line
@@ -52,7 +58,7 @@ const StudentsByGrade = () => {
         <td className="border px-4 py-2">{`${student.firstName} ${student.lastName}`}</td>
         <td className="border px-4 py-2">{student.dni}</td>
         <td className="border px-4 py-2">{student.phone}</td>
-        <td className="border px-4 py-2">{student.fechaNacimiento}</td>
+        <td className="border px-4 py-2">{dateFormated(student.fechaNacimiento)}</td>
         <td className="border px-4 py-2">{student.gradeName}</td>
         <td className="border px-4 py-2">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
