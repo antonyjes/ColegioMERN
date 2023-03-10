@@ -60,6 +60,7 @@ const StudentsByGrade = () => {
         <td className="border px-4 py-2">{student.phone}</td>
         <td className="border px-4 py-2">{dateFormated(student.fechaNacimiento)}</td>
         <td className="border px-4 py-2">{student.gradeName}</td>
+        <td className="border px-4 py-2"><img className="w-16 h-16 mx-auto rounded-full object-cover" src={`http://localhost:3003/assets/students/${student.picturePath}`} alt={`${student.firstName} pict`} /></td>
         <td className="border px-4 py-2">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
             Edit
@@ -94,6 +95,7 @@ const StudentsByGrade = () => {
                 <th className="px-4 py-2">Phone</th>
                 <th className="px-4 py-2">Fecha Nacimiento</th>
                 <th className="px-4 py-2">Grade</th>
+                <th className="px-4 py-2">Image Student</th>
                 <th className="px-4 py-2">Actions</th>
               </tr>
             </thead>
