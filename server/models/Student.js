@@ -13,7 +13,6 @@ const StudentSchema = new mongoose.Schema(
         nacionality: String,
         gradeId: String,
         gradeName: String,
-        discapacidad: {type: String, default: "Sin Discapacidad"},
     },
     { timestamps: true }
 );

@@ -37,7 +37,6 @@ export const registerStudent = async (req, res) => {
       fechaNacimiento,
       nacionality,
       gradeId,
-      discapacidad,
     } = req.body;
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
@@ -54,7 +53,6 @@ export const registerStudent = async (req, res) => {
       nacionality,
       gradeId,
       gradeName: grade.gradeName,
-      discapacidad,
     });
     const savedStudent = await newStudent.save();
     res.status(201).json(savedStudent);
