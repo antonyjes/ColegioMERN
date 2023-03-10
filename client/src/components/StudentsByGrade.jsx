@@ -31,19 +31,25 @@ const StudentsByGrade = () => {
     setCurrentPage(selectedPage);
   };
 
-//   const handleDelete = async (gradeId) => {
-//     const response = await fetch(`http://localhost:3003/grades/${gradeId}/delete`, {
-//       method: "DELETE",
-//       headers: {Authorization: `Bearer ${token}`, "Content-Type": "application/json",},
-//     });
-//     console.log(response);
-//     console.log("Grade deleted");
-//     getGrades();
-//   }
+  const handleDelete = async (studentId) => {
+    const response = await fetch(
+      `http://localhost:3003/students/${studentId}/delete`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(response);
+    console.log("Student deleted");
+    getStudents();
+  };
 
   function dateFormated(date) {
     let dateObj = new Date(date);
-    let formattedDate = dateObj.toISOString().slice(0,10);
+    let formattedDate = dateObj.toISOString().slice(0, 10);
     return formattedDate;
   }
 
@@ -58,14 +64,25 @@ const StudentsByGrade = () => {
         <td className="border px-4 py-2">{`${student.firstName} ${student.lastName}`}</td>
         <td className="border px-4 py-2">{student.dni}</td>
         <td className="border px-4 py-2">{student.phone}</td>
-        <td className="border px-4 py-2">{dateFormated(student.fechaNacimiento)}</td>
+        <td className="border px-4 py-2">
+          {dateFormated(student.fechaNacimiento)}
+        </td>
         <td className="border px-4 py-2">{student.gradeName}</td>
-        <td className="border px-4 py-2"><img className="w-16 h-16 mx-auto rounded-full object-cover" src={`http://localhost:3003/assets/students/${student.picturePath}`} alt={`${student.firstName} pict`} /></td>
+        <td className="border px-4 py-2">
+          <img
+            className="w-16 h-16 mx-auto rounded-full object-cover"
+            src={`http://localhost:3003/assets/students/${student.picturePath}`}
+            alt={`${student.firstName} pict`}
+          />
+        </td>
         <td className="border px-4 py-2">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
             Edit
           </button>
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => handleDelete(student._id)}
+          >
             Delete
           </button>
         </td>

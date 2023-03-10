@@ -11,6 +11,7 @@ const ScoreSchema = new mongoose.Schema(
         studentName: String,
         courseId: String,
         courseName: String,
+        period: String,
     },
     {timestamps: true}
 );

@@ -42,7 +42,7 @@ const Teachers = () => {
         <td className="border px-4 py-2">{teacher.lastName}</td>
         <td className="border px-4 py-2">{teacher.email}</td>
         <td className="border px-4 py-2">{teacher.phone}</td>
-        <td className="border px-4 py-2"><img className="w-16 h-16 mx-auto rounded-full object-cover" src={`http://localhost:3003/assets/students/${teacher.picturePath}`} alt={`${teacher.firstName} pict`} /></td>
+        <td className="border px-4 py-2"><img className="w-16 h-16 mx-auto rounded-full object-cover" src={`http://localhost:3003/assets/teachers/${teacher.picturePath}`} alt={`${teacher.firstName} pict`} /></td>
         <td className="border px-4 py-2">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
             Edit

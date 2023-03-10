@@ -6,6 +6,7 @@ const AttendanceSchema = new mongoose.Schema(
         date: Date,
         studentId: String,
         studentName: String,
+        period: String,
     },
     {timestamps: true}
 );
