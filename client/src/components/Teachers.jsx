@@ -30,6 +30,22 @@ const Teachers = () => {
     setCurrentPage(selectedPage);
   };
 
+  const handleDelete = async (teacherId) => {
+    const response = await fetch(
+      `http://localhost:3003/teachers/${teacherId}/delete`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(response);
+    console.log("Teacher deleted");
+    getTeachers();
+  };
+
   useEffect(() => {
     getTeachers();
   }, []); // eslint-disable-line
@@ -47,7 +63,7 @@ const Teachers = () => {
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
             Edit
           </button>
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDelete(teacher._id)}>
             Delete
           </button>
         </td>
