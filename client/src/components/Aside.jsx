@@ -135,7 +135,7 @@ const Aside = () => {
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-book"
+                    className="bi bi-book"
                     viewBox="0 0 16 16"
                   >
                     {" "}

@@ -14,7 +14,7 @@ const CoursesByGrade = () => {
   const navigate = useNavigate();
   const { gradeId } = useParams();
 
-  const getGrades = async () => {
+  const getCourses = async () => {
     const response = await fetch(`http://localhost:3003/courses/${gradeId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
@@ -38,12 +38,12 @@ const CoursesByGrade = () => {
     });
     console.log(response);
     console.log("Course deleted");
-    getGrades();
+    getCourses();
   }
 
   useEffect(() => {
-    getGrades();
-  }, [level]); // eslint-disable-line
+    getCourses();
+  }, [gradeId]); // eslint-disable-line
 
   const coursesToDisplay = courses
     .slice(offset, offset + PER_PAGE)
