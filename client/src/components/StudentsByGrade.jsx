@@ -96,7 +96,7 @@ const StudentsByGrade = () => {
       <div className="p-4 sm:ml-64">
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
           <div className="flex flex-row justify-between mb-4">
-            <h1 className="text-3xl font-bold mb-4">Grades</h1>
+            <h1 className="text-3xl font-bold mb-4">Students</h1>
             <button
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
               onClick={() => navigate(`/newStudent/${gradeId}`)}

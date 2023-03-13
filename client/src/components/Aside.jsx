@@ -8,6 +8,9 @@ const Aside = () => {
   const navigate = useNavigate();
   const [studentDropdown, setStudentDropdown] = useState(false);
   const [gradeDropdown, setGradeDropdown] = useState(false);
+  const [scoreDropdown, setScoreDropdown] = useState(false);
+  const [attendanceDropdown, setAttendanceDropdown] = useState(false);
+  const [courseDropdown, setCourseDropdown] = useState(false);
   const role = useSelector((state) => state.user.role);
 
   return (
@@ -102,7 +105,9 @@ const Aside = () => {
                   <li>
                     <p
                       className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      onClick={() => navigate("/gradesByLevel/Primaria")}
+                      onClick={() =>
+                        navigate("/gradesByLevel/Primaria/student")
+                      }
                     >
                       Primaria
                     </p>
@@ -110,7 +115,9 @@ const Aside = () => {
                   <li>
                     <p
                       className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      onClick={() => navigate("/gradesByLevel/Secundaria")}
+                      onClick={() =>
+                        navigate("/gradesByLevel/Secundaria/student")
+                      }
                     >
                       Secundaria
                     </p>
@@ -118,9 +125,67 @@ const Aside = () => {
                 </ul>
               </li>
               <li>
-                <div
-                  className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  role="button"
+                <button
+                  type="button"
+                  className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  onClick={() => setCourseDropdown(!courseDropdown)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-book"
+                    viewBox="0 0 16 16"
+                  >
+                    {" "}
+                    <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />{" "}
+                  </svg>
+
+                  <span className="flex-1 ml-3 text-left whitespace-nowrap">
+                    Courses
+                  </span>
+                  <svg
+                    className="w-6 h-6"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+                <ul
+                  className={`${
+                    courseDropdown ? null : "hidden"
+                  } py-2 space-y-2 bg-slate-500 rounded`}
+                >
+                  <li>
+                    <p
+                      className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      onClick={() => navigate("/grades/Primaria/course")}
+                    >
+                      Primaria
+                    </p>
+                  </li>
+                  <li>
+                    <p
+                      className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      onClick={() => navigate("/grades/Secundaria/course")}
+                    >
+                      Secundaria
+                    </p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  onClick={() => setScoreDropdown(!scoreDropdown)}
                 >
                   <svg
                     aria-hidden="true"
@@ -135,13 +200,51 @@ const Aside = () => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  <span className="flex-1 ml-3 whitespace-nowrap">Scores</span>
-                </div>
+
+                  <span className="flex-1 ml-3 text-left whitespace-nowrap">
+                    Scores
+                  </span>
+                  <svg
+                    className="w-6 h-6"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+                <ul
+                  className={`${
+                    scoreDropdown ? null : "hidden"
+                  } py-2 space-y-2 bg-slate-500 rounded`}
+                >
+                  <li>
+                    <p
+                      className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      onClick={() => navigate("/grades/Primaria/score")}
+                    >
+                      Primaria
+                    </p>
+                  </li>
+                  <li>
+                    <p
+                      className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      onClick={() => navigate("/grades/Secundaria/score")}
+                    >
+                      Secundaria
+                    </p>
+                  </li>
+                </ul>
               </li>
               <li>
-                <div
-                  className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  role="button"
+                <button
+                  type="button"
+                  className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  onClick={() => setAttendanceDropdown(!attendanceDropdown)}
                 >
                   <svg
                     aria-hidden="true"
@@ -156,10 +259,45 @@ const Aside = () => {
                       clipRule="evenodd"
                     ></path>
                   </svg>
-                  <span className="flex-1 ml-3 whitespace-nowrap">
+
+                  <span className="flex-1 ml-3 text-left whitespace-nowrap">
                     Attendance
                   </span>
-                </div>
+                  <svg
+                    className="w-6 h-6"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+                <ul
+                  className={`${
+                    attendanceDropdown ? null : "hidden"
+                  } py-2 space-y-2 bg-slate-500 rounded`}
+                >
+                  <li>
+                    <p
+                      className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      onClick={() => navigate("/grades/Primaria/attendance")}
+                    >
+                      Primaria
+                    </p>
+                  </li>
+                  <li>
+                    <p
+                      className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                      onClick={() => navigate("/grades/Secundaria/attendance")}
+                    >
+                      Secundaria
+                    </p>
+                  </li>
+                </ul>
               </li>
               <li>
                 <button

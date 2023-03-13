@@ -10,7 +10,7 @@ const GradesByLevel = () => {
   const dispatch = useDispatch();
   const grades = useSelector((state) => state.grades);
   const token = useSelector((state) => state.token);
-  const { level } = useParams();
+  const { level, action } = useParams();
 
   const getGrades = async () => {
     const response = await fetch(`http://localhost:3003/grades/${level}`, {
@@ -33,7 +33,7 @@ const GradesByLevel = () => {
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
           <div>
             {grades.map((grade) => (
-                <CardGrade key={grade._id} gradeId={grade._id} gradeName={grade.gradeName} level={level} />
+                <CardGrade key={grade._id} gradeId={grade._id} gradeName={grade.gradeName} level={level} action={action} />
             ))}
           </div>
         </div>

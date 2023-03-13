@@ -39,11 +39,11 @@ function App() {
             element={isAuth ? <NewGrade /> : <Navigate to="/" />}
           />
           <Route
-            path="/gradesByLevel/:level"
+            path="/gradesByLevel/:level/:action"
             element={isAuth ? <GradesByLevel /> : <Navigate to="/" />}
           />
           <Route
-            path="/studentsByGrade/:gradeId"
+            path="/studentsByGrade/:gradeId/"
             element={isAuth ? <StudentsByGrade /> : <Navigate to="/" />}
           />
           <Route
