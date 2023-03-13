@@ -166,7 +166,7 @@ const Aside = () => {
                   <li>
                     <p
                       className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      onClick={() => navigate("/grades/Primaria/course")}
+                      onClick={() => navigate("/gradesByLevel/Primaria/course")}
                     >
                       Primaria
                     </p>
@@ -174,7 +174,7 @@ const Aside = () => {
                   <li>
                     <p
                       className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      onClick={() => navigate("/grades/Secundaria/course")}
+                      onClick={() => navigate("/gradesByLevel/Secundaria/course")}
                     >
                       Secundaria
                     </p>
@@ -225,7 +225,7 @@ const Aside = () => {
                   <li>
                     <p
                       className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      onClick={() => navigate("/grades/Primaria/score")}
+                      onClick={() => navigate("/gradesByLevel/Primaria/score")}
                     >
                       Primaria
                     </p>
@@ -233,7 +233,7 @@ const Aside = () => {
                   <li>
                     <p
                       className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      onClick={() => navigate("/grades/Secundaria/score")}
+                      onClick={() => navigate("/gradesByLevel/Secundaria/score")}
                     >
                       Secundaria
                     </p>
@@ -284,7 +284,7 @@ const Aside = () => {
                   <li>
                     <p
                       className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      onClick={() => navigate("/grades/Primaria/attendance")}
+                      onClick={() => navigate("/gradesByLevel/Primaria/attendance")}
                     >
                       Primaria
                     </p>
@@ -292,7 +292,7 @@ const Aside = () => {
                   <li>
                     <p
                       className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      onClick={() => navigate("/grades/Secundaria/attendance")}
+                      onClick={() => navigate("/gradesByLevel/Secundaria/attendance")}
                     >
                       Secundaria
                     </p>
