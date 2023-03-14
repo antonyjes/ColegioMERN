@@ -7,7 +7,7 @@ const CardGrade = ({ gradeId, gradeName, level, action }) => {
     if (action === "student") {
       navigate(`/studentsByGrade/${gradeId}`);
     } else if (action === "score") {
-      navigate(`/studentsByGradeScore/${gradeId}`);
+      navigate(`/coursesByGradeScore/${gradeId}`);
     } else if (action === "attendance") {
       navigate(`/studentsByGradeAttendance/${gradeId}`);
     } else if (action === "course") {

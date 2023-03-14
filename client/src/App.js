@@ -1,4 +1,5 @@
 import CoursesByGrade from "components/CoursesByGrade";
+import CoursesByGradeScore from "components/CoursesByGradeScore";
 import Grades from "components/Grades";
 import GradesByLevel from "components/GradesByLevel";
 import HomePage from "components/HomePage";
@@ -7,6 +8,7 @@ import NewCourse from "components/NewCourse";
 import NewGrade from "components/NewGrade";
 import NewStudent from "components/NewStudent";
 import NewTeacher from "components/NewTeacher";
+import ScoresByCourse from "components/ScoresByCourse";
 import StudentsByGrade from "components/StudentsByGrade";
 import Teachers from "components/Teachers";
 import { useSelector } from "react-redux";
@@ -59,6 +61,14 @@ function App() {
           <Route
             path="/newCourse/:gradeId"
             element={isAuth ? <NewCourse /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/coursesByGradeScore/:gradeId"
+            element={isAuth ? <CoursesByGradeScore /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/scoresByCourse/:courseId"
+            element={isAuth ? <ScoresByCourse /> : <Navigate to="/" />}
           />
         </Routes>
       </BrowserRouter>
