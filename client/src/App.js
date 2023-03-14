@@ -6,6 +6,7 @@ import HomePage from "components/HomePage";
 import LoginPage from "components/LoginPage";
 import NewCourse from "components/NewCourse";
 import NewGrade from "components/NewGrade";
+import NewScore from "components/NewScore";
 import NewStudent from "components/NewStudent";
 import NewTeacher from "components/NewTeacher";
 import ScoresByCourse from "components/ScoresByCourse";
@@ -67,8 +68,12 @@ function App() {
             element={isAuth ? <CoursesByGradeScore /> : <Navigate to="/" />}
           />
           <Route
-            path="/scoresByCourse/:courseId"
+            path="/scoresByCourse/:courseId/:gradeId"
             element={isAuth ? <ScoresByCourse /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/newScore/:courseId/:gradeId"
+            element={isAuth ? <NewScore /> : <Navigate to="/" />}
           />
         </Routes>
       </BrowserRouter>

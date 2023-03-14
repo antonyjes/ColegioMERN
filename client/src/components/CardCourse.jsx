@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const CardCourse = ({ courseId, courseName, teacherName }) => {
+const CardCourse = ({ courseId, courseName, teacherName, gradeId }) => {
   const navigate = useNavigate();
 
   return (
@@ -8,7 +8,7 @@ const CardCourse = ({ courseId, courseName, teacherName }) => {
       className="max-w-sm rounded overflow-hidden shadow-lg"
       key={courseId}
       role="button"
-      onClick={() => navigate(`/scoresByCourse/${courseId}`)}
+      onClick={() => navigate(`/scoresByCourse/${courseId}/${gradeId}`)}
     >
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{courseName}</div>

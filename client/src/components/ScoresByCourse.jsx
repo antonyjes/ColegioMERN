@@ -12,7 +12,7 @@ const ScoresByCourse = () => {
   const token = useSelector((state) => state.token);
   const [currentPage, setCurrentPage] = useState(0);
   const navigate = useNavigate();
-  const { courseId } = useParams();
+  const { courseId, gradeId } = useParams();
 
   const getScores = async () => {
     const response = await fetch(`http://localhost:3003/scores/${courseId}`, {
@@ -86,7 +86,7 @@ const ScoresByCourse = () => {
             <h1 className="text-3xl font-bold mb-4">Scores</h1>
             <button
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
-              onClick={() => navigate(`/newScore/${courseId}`)}
+              onClick={() => navigate(`/newScore/${courseId}/${gradeId}`)}
             >
               New Score
             </button>
