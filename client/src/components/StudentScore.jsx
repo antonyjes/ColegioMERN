@@ -1,25 +1,27 @@
 import Aside from "./Aside";
 import Sidebar from "./Sidebar";
 import ReactPaginate from "react-paginate";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import { setScores } from "state";
 
 const StudentScore = () => {
+  const dispatch = useDispatch();
+  const scores = useSelector((state) => state.scores);
   const token = useSelector((state) => state.token);
   const user = useSelector((state) => state.user);
   const [currentPage, setCurrentPage] = useState(0);
-  const [scores, setScores] = useState([]);
 
-  const getScores = async () => {
+  const getScoresRecord = async () => {
     const response = await fetch(
-      `http://localhost:3003/scores/${user._id}`,
+      `http://localhost:3003/scores/${user._id}/student`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       }
     );
     const data = await response.json();
-    setScores(data);
+    dispatch(setScores({scores: data}));
   };
 
   const PER_PAGE = 10;
@@ -31,7 +33,7 @@ const StudentScore = () => {
   };
 
   useEffect(() => {
-    getScores();
+    getScoresRecord();
   }, []); // eslint-disable-line
 
   const scoresToDisplay = scores

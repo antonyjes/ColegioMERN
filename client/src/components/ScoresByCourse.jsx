@@ -15,7 +15,7 @@ const ScoresByCourse = () => {
   const { courseId, gradeId } = useParams();
 
   const getScores = async () => {
-    const response = await fetch(`http://localhost:3003/scores/${courseId}`, {
+    const response = await fetch(`http://localhost:3003/scores/${courseId}/course`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
