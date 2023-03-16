@@ -48,3 +48,13 @@ export const getAttendance = async (req, res) => {
         res.status(409).json({message: error.message});
     }
 }
+
+export const getAttendancebyStudent = async (req, res) => {
+    try {
+        const {studentId} = req.params;
+        const attendanceRecord = await Attendance.find({studentId, status: {$in: ["late", "absent"]}});
+        res.status(200).json(attendanceRecord);
+    } catch (error) {
+        res.status(409).json({message: error.message});
+    }
+}

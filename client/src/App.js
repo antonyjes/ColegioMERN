@@ -10,6 +10,7 @@ import NewScore from "components/NewScore";
 import NewStudent from "components/NewStudent";
 import NewTeacher from "components/NewTeacher";
 import ScoresByCourse from "components/ScoresByCourse";
+import StudentAttendance from "components/StudentAttendance";
 import StudentsByGrade from "components/StudentsByGrade";
 import StudentsByGradeAttendance from "components/StudentsByGradeAttendance";
 import Teachers from "components/Teachers";
@@ -79,6 +80,10 @@ function App() {
           <Route
             path="/studentsByGradeAttendance/:gradeId"
             element={isAuth ? <StudentsByGradeAttendance /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/studentAttendance"
+            element={isAuth ? <StudentAttendance /> : <Navigate to="/" />}
           />
         </Routes>
       </BrowserRouter>
