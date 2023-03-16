@@ -2,10 +2,11 @@ import mongoose from "mongoose";
 
 const AttendanceSchema = new mongoose.Schema(
     {
-        state: String,
+        status: String,
         date: Date,
         studentId: String,
-        studentName: String,
+        studentFirstName: String,
+        studentLastName: String,
         period: String,
     },
     {timestamps: true}

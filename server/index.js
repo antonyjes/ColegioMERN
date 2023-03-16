@@ -15,6 +15,7 @@ import gradeRoutes from "./routes/grades.js";
 import studentRoutes from "./routes/students.js";
 import courseRoutes from "./routes/courses.js";
 import scoreRoutes from "./routes/scores.js";
+import attendanceRoutes from "./routes/attendance.js";
 import {
   registerAdmin,
   registerStudent,
@@ -94,6 +95,7 @@ app.use("/grades", gradeRoutes);
 app.use("/students", studentRoutes);
 app.use("/courses", courseRoutes);
 app.use("/scores", scoreRoutes);
+app.use("/attendance", attendanceRoutes);
 
 //MONGOOSE SETUP
 const PORT = process.env.PORT || 6001;
