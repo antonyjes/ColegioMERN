@@ -36,6 +36,16 @@ export const getCoursesByGrade = async (req, res) => {
   }
 };
 
+export const getCoursesByTeacher = async (req, res) => {
+  try {
+    const { teacherId } = req.params;
+    const course = await Course.find({ teacherId });
+    res.status(201).json(course);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
 // DELETE
 export const deleteCourse = async (req, res) => {
   try {
