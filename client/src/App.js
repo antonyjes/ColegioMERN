@@ -1,5 +1,6 @@
 import CoursesByGrade from "components/CoursesByGrade";
 import CoursesByGradeScore from "components/CoursesByGradeScore";
+import EditGrade from "components/EditGrade";
 import Grades from "components/Grades";
 import GradesByLevel from "components/GradesByLevel";
 import HomePage from "components/HomePage";
@@ -94,6 +95,10 @@ function App() {
           <Route
             path="/teacherCourses"
             element={isAuth ? <TeacherCourses /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/editGrade"
+            element={isAuth ? <EditGrade /> : <Navigate to="/" />}
           />
         </Routes>
       </BrowserRouter>
