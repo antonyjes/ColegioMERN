@@ -7,7 +7,7 @@ import FormEditGrade from "./FormEditGrade";
 
 const EditGrade = () => {
     const token = useSelector((state) => state.token);
-    const {level, gradeId} = useParams;
+    const {level, gradeId} = useParams();
     const [gradeData, setGradeData] = useState(null);
 
     const getGrade = async () => {

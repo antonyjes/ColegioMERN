@@ -26,14 +26,40 @@ export const getGrades = async (req, res) => {
   }
 };
 
+export const getGrade = async (req, res) => {
+  try {
+    const { gradeId } = req.params;
+    const grade = await Grade.findById(gradeId);
+    res.status(200).json(grade);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
+// UPDATE
+export const editGrade = async (req, res) => {
+  try {
+    const { gradeId } = req.params;
+    const { gradeName, level } = req.body;
+    const updatedGrade = await Grade.findByIdAndUpdate(
+      gradeId,
+      { gradeName, level },
+      { new: true }
+    );
+    res.status(200).json(updatedGrade);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
 // DELETE
 export const deleteGrade = async (req, res) => {
   try {
-    const {gradeId} = req.params;
+    const { gradeId } = req.params;
     const deletedGrade = await Grade.findByIdAndDelete(gradeId);
     res.status(200).json(deletedGrade);
   } catch (error) {
     console.log(error);
-    res.status(409).json({message: error.message});
+    res.status(409).json({ message: error.message });
   }
-}
+};
