@@ -57,6 +57,41 @@ export const getScoresByStudent = async (req, res) => {
   }
 };
 
+export const getScore = async (req, res) => {
+  try {
+    const { scoreId } = req.params;
+    const score = await Score.findById(scoreId);
+    res.status(201).json(score);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
+// UPDATE
+export const editScore = async (req, res) => {
+  try {
+    const { scoreId } = req.params;
+    const {
+      score1,
+      score2,
+      score3,
+      score4,
+      promedio,
+      studentId,
+      courseId,
+      period,
+    } = req.body;
+    const updatedScore = await Score.findByIdAndUpdate(
+      scoreId,
+      { score1, score2, score3, score4, promedio, studentId, courseId, period },
+      { new: true }
+    );
+    res.status(200).json(updatedScore);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
 // DELETE
 export const deleteScore = async (req, res) => {
   try {
