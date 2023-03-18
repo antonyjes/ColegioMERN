@@ -97,7 +97,7 @@ function App() {
             element={isAuth ? <TeacherCourses /> : <Navigate to="/" />}
           />
           <Route
-            path="/editGrade"
+            path="/editGrade/:level/:gradeId"
             element={isAuth ? <EditGrade /> : <Navigate to="/" />}
           />
         </Routes>
