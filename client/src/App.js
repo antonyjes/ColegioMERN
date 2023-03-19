@@ -1,5 +1,6 @@
 import CoursesByGrade from "components/CoursesByGrade";
 import CoursesByGradeScore from "components/CoursesByGradeScore";
+import EditCourse from "components/EditCourse";
 import EditGrade from "components/EditGrade";
 import EditScore from "components/EditScore";
 import Grades from "components/Grades";
@@ -104,6 +105,10 @@ function App() {
           <Route
             path="/editScore/:courseId/:gradeId/:scoreId"
             element={isAuth ? <EditScore /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/editCourse/:gradeId/:courseId"
+            element={isAuth ? <EditCourse /> : <Navigate to="/" />}
           />
         </Routes>
       </BrowserRouter>

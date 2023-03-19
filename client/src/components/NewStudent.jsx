@@ -56,7 +56,7 @@ const NewStudent = () => {
       <div className="p-4 sm:ml-64">
         <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
           <div className="flex flex-row justify-between mb-4">
-            <h1 className="text-3xl font-bold mb-4">New Teacher</h1>
+            <h1 className="text-3xl font-bold mb-4">New Student</h1>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
