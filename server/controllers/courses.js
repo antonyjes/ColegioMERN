@@ -46,6 +46,41 @@ export const getCoursesByTeacher = async (req, res) => {
   }
 };
 
+export const getCourse = async (req, res) => {
+  try {
+    const { courseId } = req.params;
+    const course = await Course.findById(courseId);
+    res.status(201).json(course);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
+// UPDATE
+export const editCourse = async (req, res) => {
+  try {
+    const { courseId } = req.params;
+    const { nameCourse, teacherId, gradeId } = req.body;
+    const teacher = await Teacher.findById(teacherId);
+    const grade = await Grade.findById(gradeId);
+    const updatedCourse = await Course.findByIdAndUpdate(
+      courseId,
+      {
+        nameCourse,
+        teacherId,
+        teacherName: `${teacher.firstName} ${teacher.lastName}`,
+        gradeId,
+        gradeName: grade.gradeName,
+        level: grade.level,
+      },
+      { new: true }
+    );
+    res.status(200).json(updatedCourse);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
 // DELETE
 export const deleteCourse = async (req, res) => {
   try {
