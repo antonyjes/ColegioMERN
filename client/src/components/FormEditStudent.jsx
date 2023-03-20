@@ -7,13 +7,19 @@ const FormEditStudent = ({studentData, setStudentData, gradeId}) => {
   const token = useSelector((state) => state.token);
   const navigate = useNavigate();
 
+  function dateFormated(date) {
+    let dateObj = new Date(date);
+    let formattedDate = dateObj.toISOString().slice(0, 10);
+    return formattedDate;
+  }
+
   const [newImage, setNewImage] = useState("");
   const [filename, setFilename] = useState(studentData.picturePath);
   const [firstName, setFirstName] = useState(studentData.firstName);
   const [lastName, setLastName] = useState(studentData.lastName);
   const [dni, setDni] = useState(studentData.dni);
   const [phone, setPhone] = useState(studentData.phone);
-  const [fechaNacimiento, setFechaNacimiento] = useState(studentData.fechaNacimiento);
+  const [fechaNacimiento, setFechaNacimiento] = useState(dateFormated(studentData.fechaNacimiento));
   const [nacionality, setNacionality] = useState(studentData.nacionality);
   const [password, setPassword] = useState("");
 
@@ -37,7 +43,7 @@ const FormEditStudent = ({studentData, setStudentData, gradeId}) => {
     formData.append("gradeId", gradeId);
 
     const response = await fetch(
-      `http://localhost:3003/auth/${studentData._id}/editStudent`,
+      `http://localhost:3003/students/${studentData._id}/editStudent`,
       {
         method: "PATCH",
         headers: { Authorization: `Bearer ${token}` },
@@ -223,7 +229,6 @@ const FormEditStudent = ({studentData, setStudentData, gradeId}) => {
                 id="password"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="•••••••••"
-                required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />

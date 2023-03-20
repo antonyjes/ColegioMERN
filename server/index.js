@@ -22,6 +22,7 @@ import {
   registerTeacher,
 } from "./controllers/auth.js";
 import { verifyToken } from "./middleware/auth.js";
+import { editStudent } from "./controllers/students.js";
 
 //CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -87,6 +88,7 @@ app.post(
   registerTeacher
 );
 app.post("/auth/registerAdmin", adminUpload.single("picture"), registerAdmin);
+app.patch("/students/:studentId/editStudent", verifyToken, studentUpload.single("picture"), editStudent);
 
 //ROUTES
 app.use("/auth", authRoutes);
