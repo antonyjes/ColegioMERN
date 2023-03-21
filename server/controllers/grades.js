@@ -1,4 +1,6 @@
 import Grade from "../models/Grade.js";
+import Course from "../models/Course.js";
+import Student from "../models/Student.js";
 
 // CREATE
 export const createGrade = async (req, res) => {
@@ -46,6 +48,8 @@ export const editGrade = async (req, res) => {
       { gradeName, level },
       { new: true }
     );
+    await Course.updateMany({gradeId: gradeId}, {gradeName});
+    await Student.updateMany({gradeId: gradeId}, {gradeName});
     res.status(200).json(updatedGrade);
   } catch (error) {
     res.status(409).json({ message: error.message });
