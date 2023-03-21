@@ -23,6 +23,7 @@ import {
 } from "./controllers/auth.js";
 import { verifyToken } from "./middleware/auth.js";
 import { editStudent } from "./controllers/students.js";
+import { editTeacher } from "./controllers/teachers.js";
 
 //CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -89,6 +90,7 @@ app.post(
 );
 app.post("/auth/registerAdmin", adminUpload.single("picture"), registerAdmin);
 app.patch("/students/:studentId/editStudent", verifyToken, studentUpload.single("picture"), editStudent);
+app.patch("/teachers/:teacherId/editTeacher", verifyToken, teacherUpload.single("picture"), editTeacher);
 
 //ROUTES
 app.use("/auth", authRoutes);

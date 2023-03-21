@@ -1,11 +1,12 @@
 import express from "express";
-import { deleteTeacher, getTeachers } from "../controllers/teachers.js";
+import { deleteTeacher, getTeacher, getTeachers } from "../controllers/teachers.js";
 import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
 
 //READ
 router.get("/", verifyToken, getTeachers);
+router.get("/:teacherId/teacher", verifyToken, getTeacher);
 
 //DELETE
 router.delete("/:teacherId/delete", verifyToken, deleteTeacher);
