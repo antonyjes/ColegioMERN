@@ -4,6 +4,7 @@ import EditCourse from "components/EditCourse";
 import EditGrade from "components/EditGrade";
 import EditScore from "components/EditScore";
 import EditStudent from "components/EditStudent";
+import EditTeacher from "components/EditTeacher";
 import Grades from "components/Grades";
 import GradesByLevel from "components/GradesByLevel";
 import HomePage from "components/HomePage";
@@ -114,6 +115,10 @@ function App() {
           <Route
             path="/editStudent/:gradeId/:studentId"
             element={isAuth ? <EditStudent /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/editTeacher/:teacherId"
+            element={isAuth ? <EditTeacher /> : <Navigate to="/" />}
           />
         </Routes>
       </BrowserRouter>
