@@ -26,6 +26,15 @@ export const getStudent = async (req, res) => {
   }
 };
 
+export const quantityStudents = async (req, res) => {
+  try {
+    const countStudents = await Student.countDocuments({});
+    res.status(201).json(countStudents);
+  } catch (error) {
+    res.status(409).json({message: error.message});
+  }
+}
+
 // UPDATE
 export const editStudent = async (req, res) => {
   try {
