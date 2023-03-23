@@ -57,6 +57,15 @@ export const getCourse = async (req, res) => {
   }
 };
 
+export const quantityCourses = async (req, res) => {
+  try {
+    const countCourses = await Course.countDocuments({});
+    res.status(201).json(countCourses);
+  } catch (error) {
+    res.status(409).json({message: error.message});
+  }
+}
+
 // UPDATE
 export const editCourse = async (req, res) => {
   try {

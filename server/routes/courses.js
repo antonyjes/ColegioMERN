@@ -1,5 +1,5 @@
 import express from "express";
-import { deleteCourse, editCourse, getCourse, getCoursesByGrade, getCoursesByTeacher, registerCourse } from "../controllers/courses.js";
+import { deleteCourse, editCourse, getCourse, getCoursesByGrade, getCoursesByTeacher, quantityCourses, registerCourse } from "../controllers/courses.js";
 import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
@@ -11,6 +11,7 @@ router.post("/createCourse", verifyToken, registerCourse);
 router.get("/:gradeId", verifyToken, getCoursesByGrade);
 router.get("/:teacherId/teacher", verifyToken, getCoursesByTeacher);
 router.get("/:courseId/course", verifyToken, getCourse);
+router.get("/count/all", verifyToken, quantityCourses);
 
 //UPDATE
 router.patch("/:courseId/edit", verifyToken, editCourse);
