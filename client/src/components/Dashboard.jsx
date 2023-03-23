@@ -1,4 +1,4 @@
-const Dashboard = ({role, totalStudents, totalTeachers}) => {
+const Dashboard = ({role, totalStudents, totalTeachers, totalGrades}) => {
   return (
     <div className="p-4 sm:ml-64">
       <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
@@ -15,7 +15,7 @@ const Dashboard = ({role, totalStudents, totalTeachers}) => {
         </div>
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-            <p className="text-2xl text-gray-400 dark:text-gray-500">80 Grades</p>
+            <p className="text-2xl text-gray-400 dark:text-gray-500">{`${totalGrades} ${totalGrades > 1 ? "Grades" : "Grade"}`}</p>
           </div>
           <div className="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
             <p className="text-2xl text-gray-400 dark:text-gray-500">15 Courses</p>

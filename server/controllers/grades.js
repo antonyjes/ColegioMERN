@@ -38,6 +38,15 @@ export const getGrade = async (req, res) => {
   }
 };
 
+export const quantityGrades = async (req, res) => {
+  try {
+    const countGrades = await Grade.countDocuments({});
+    res.status(200).json(countGrades);
+  } catch (error) {
+    res.status(409).json({message: error.message});
+  }
+}
+
 // UPDATE
 export const editGrade = async (req, res) => {
   try {
