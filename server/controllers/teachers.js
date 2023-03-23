@@ -23,6 +23,15 @@ export const getTeacher = async (req, res) => {
   }
 };
 
+export const quantityTeachers = async (req, res) => {
+  try {
+    const countTeachers = await Teacher.countDocuments({});
+    res.status(200).json(countTeachers);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
 // UPDATE
 export const editTeacher = async (req, res) => {
   try {
